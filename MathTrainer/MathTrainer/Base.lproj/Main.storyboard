@@ -290,18 +290,28 @@
                                     <action selector="rightAction:" destination="O7T-AW-gEc" eventType="touchUpInside" id="di0-79-yA7"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCh-hO-39X">
+                                <rect key="frame" x="193" y="87" width="149" height="87"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n09-sq-Gbe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RHG-8o-mcl" firstAttribute="centerX" secondItem="Oy3-Ia-QOy" secondAttribute="centerX" constant="60" id="1l8-fA-K9x"/>
+                            <constraint firstItem="gCh-hO-39X" firstAttribute="top" secondItem="n09-sq-Gbe" secondAttribute="top" constant="87" id="2Pf-tS-ZEI"/>
+                            <constraint firstItem="n09-sq-Gbe" firstAttribute="trailing" secondItem="gCh-hO-39X" secondAttribute="trailing" constant="72" id="8BR-2Y-ex3"/>
                             <constraint firstItem="Wxu-Kg-Ire" firstAttribute="centerX" secondItem="Oy3-Ia-QOy" secondAttribute="centerX" id="SQZ-On-JR4"/>
                             <constraint firstItem="u7h-FN-SQv" firstAttribute="centerX" secondItem="Oy3-Ia-QOy" secondAttribute="centerX" constant="-60" id="STR-MB-Hi6"/>
                             <constraint firstItem="u7h-FN-SQv" firstAttribute="top" secondItem="Wxu-Kg-Ire" secondAttribute="bottom" constant="120" id="Vzo-BE-sQd"/>
                             <constraint firstItem="RHG-8o-mcl" firstAttribute="centerY" secondItem="u7h-FN-SQv" secondAttribute="centerY" id="XIQ-Se-p1l"/>
                             <constraint firstItem="lLc-R1-0uh" firstAttribute="leading" secondItem="n09-sq-Gbe" secondAttribute="leading" constant="50" id="Z5P-Ag-0o6"/>
                             <constraint firstItem="lLc-R1-0uh" firstAttribute="top" secondItem="n09-sq-Gbe" secondAttribute="top" constant="50" id="ieo-TS-dI2"/>
+                            <constraint firstItem="Wxu-Kg-Ire" firstAttribute="top" secondItem="gCh-hO-39X" secondAttribute="bottom" constant="215" id="rV4-Y9-AV1"/>
                             <constraint firstItem="Wxu-Kg-Ire" firstAttribute="centerY" secondItem="Oy3-Ia-QOy" secondAttribute="centerY" constant="-30" id="tVj-NE-PTh"/>
+                            <constraint firstItem="gCh-hO-39X" firstAttribute="leading" secondItem="lLc-R1-0uh" secondAttribute="trailing" constant="63" id="xbq-8m-Ndz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7r6-tR-QDd"/>
@@ -310,12 +320,13 @@
                         <outlet property="leftButton" destination="u7h-FN-SQv" id="xF1-Vu-ujM"/>
                         <outlet property="questionLabel" destination="Wxu-Kg-Ire" id="WOp-TI-W6o"/>
                         <outlet property="rightButton" destination="RHG-8o-mcl" id="mT0-1t-5Cz"/>
+                        <outlet property="scoreLabel" destination="gCh-hO-39X" id="s7M-OF-QMc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fx-F7-NoS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="TdF-85-7gl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1049" y="3"/>
+            <point key="canvasLocation" x="1047.8260869565217" y="2.6785714285714284"/>
         </scene>
     </scenes>
     <resources>

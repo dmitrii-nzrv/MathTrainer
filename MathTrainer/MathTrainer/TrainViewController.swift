@@ -16,7 +16,7 @@ final class TrainViewController: UIViewController{
     private var sign: String = ""
     private var count: Int = 0{
         didSet{
-            print("Coint: \(count)")
+            updateScore()
         }
     }
     
@@ -63,6 +63,8 @@ final class TrainViewController: UIViewController{
     
     @IBOutlet var leftButton: UIButton!
     
+    @IBOutlet var scoreLabel: UILabel!
+    
     @IBOutlet var rightButton: UIButton!
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var backButton: UIButton!
@@ -72,7 +74,7 @@ final class TrainViewController: UIViewController{
         super.viewDidLoad()
         configureQuestions()
         configureButtons()
-        
+        updateScore()
     }
     
     //MARK: - IBActions
@@ -160,6 +162,9 @@ final class TrainViewController: UIViewController{
             
         }
         
+    }
+    private func updateScore(){
+        scoreLabel.text = String(count)
     }
     
     
