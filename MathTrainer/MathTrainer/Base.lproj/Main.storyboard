@@ -265,8 +265,11 @@
                                         <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="leftAction:" destination="O7T-AW-gEc" eventType="touchUpInside" id="dvk-M5-0gp"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHG-8o-mcl">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHG-8o-mcl">
                                 <rect key="frame" x="227" y="557" width="80" height="80"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
@@ -283,6 +286,9 @@
                                         <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="rightAction:" destination="O7T-AW-gEc" eventType="touchUpInside" id="di0-79-yA7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n09-sq-Gbe"/>
@@ -301,8 +307,9 @@
                     <navigationItem key="navigationItem" id="7r6-tR-QDd"/>
                     <connections>
                         <outlet property="backButton" destination="lLc-R1-0uh" id="YLr-G2-IPh"/>
-                        <outletCollection property="trainButtonsCollection" destination="u7h-FN-SQv" collectionClass="NSMutableArray" id="kni-dc-EBI"/>
-                        <outletCollection property="trainButtonsCollection" destination="RHG-8o-mcl" collectionClass="NSMutableArray" id="MmU-t2-Cjl"/>
+                        <outlet property="leftButton" destination="u7h-FN-SQv" id="xF1-Vu-ujM"/>
+                        <outlet property="questionLabel" destination="Wxu-Kg-Ire" id="WOp-TI-W6o"/>
+                        <outlet property="rightButton" destination="RHG-8o-mcl" id="mT0-1t-5Cz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fx-F7-NoS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
