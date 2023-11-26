@@ -10,11 +10,18 @@ import UIKit
 
 final class TrainViewController: UIViewController{
     
+    // MARK: - Outlets
+    @IBOutlet var leftButton: UIButton!
+    @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet var rightButton: UIButton!
+    @IBOutlet var questionLabel: UILabel!
+    @IBOutlet var backButton: UIButton!
+    
     // MARK: - Properties
     private var firstNumber = 0
     private var secondNumber = 0
     private var sign: String = ""
-    private var count: Int = 0{
+    private(set) var count: Int = 0{
         didSet{
             updateScore()
         }
@@ -32,10 +39,9 @@ final class TrainViewController: UIViewController{
             case .divide:
                 sign = "/"
             }
-            
         }
     }
-
+    
     private var answer: Int{
         switch type {
         case .add:
@@ -43,8 +49,6 @@ final class TrainViewController: UIViewController{
         case .substract:
             return firstNumber - secondNumber
         case .multiply:
-            
-          
             return firstNumber * secondNumber
         case .divide:
             if firstNumber % secondNumber != 0{
@@ -52,38 +56,24 @@ final class TrainViewController: UIViewController{
                 configureQuestions()
                 configureButtons()
             }
-            
             return firstNumber / secondNumber
         }
     }
     
-    
-    
-    // MARK: - Outlets
-    
-    @IBOutlet var leftButton: UIButton!
-    
-    @IBOutlet var scoreLabel: UILabel!
-    
-    @IBOutlet var rightButton: UIButton!
-    @IBOutlet var questionLabel: UILabel!
-    @IBOutlet var backButton: UIButton!
-    
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateScore()
         configureQuestions()
         configureButtons()
-        updateScore()
+        
     }
-    
     //MARK: - IBActions
-    
-    @IBAction func leftAction(_ sender: UIButton) {
+    @IBAction private func leftAction(_ sender: UIButton) {
         check(answer: sender.titleLabel?.text ?? "", for: sender)
     }
     
-    @IBAction func rightAction(_ sender: UIButton) {
+    @IBAction private func rightAction(_ sender: UIButton) {
         check(answer: sender.titleLabel?.text ?? "", for: sender)
     }
     
@@ -91,18 +81,12 @@ final class TrainViewController: UIViewController{
     //MARK: - Methods
     private func configureButtons(){
         let buttonsArray = [leftButton,rightButton]
-        
         buttonsArray.forEach { button in
             button?.backgroundColor = .systemYellow
         }
-        
-        
-        // custom back button
         backButton.layer.cornerRadius = 30
         backButton.tintColor = UIColor.secondaryLabel
         
-        
-        // add shadows
         buttonsArray.forEach { button in
             button?.layer.borderColor = UIColor.darkGray.cgColor
             button?.layer.shadowOffset = CGSize(width: 1, height: 3)
@@ -111,32 +95,20 @@ final class TrainViewController: UIViewController{
         }
         
         let isRightButton = Bool.random()
-        
-        
-        
-        
         var  randomAnswer: Int
-        
         repeat {
             randomAnswer = Int.random(in: (answer - 13)...(answer+13))
-            
         } while randomAnswer == answer
-        
-        
-        
         
         rightButton.setTitle(isRightButton ? String(answer) : String(randomAnswer), for: .normal)
         leftButton.setTitle(isRightButton ? String(randomAnswer) : String(answer), for: .normal)
-        
-        
     }
     
-    private func configureQuestions(){
-        
+    private func configureQuestions() {
         if type == .multiply{
             firstNumber = Int.random(in: 1...99)
             secondNumber = Int.random(in: 1...99)
-        }else{
+        } else {
             firstNumber = Int.random(in: 1...999)
             secondNumber = Int.random(in: 1...999)
         }
@@ -163,9 +135,8 @@ final class TrainViewController: UIViewController{
         }
         
     }
+    
     private func updateScore(){
         scoreLabel.text = String(count)
     }
-    
-    
 }

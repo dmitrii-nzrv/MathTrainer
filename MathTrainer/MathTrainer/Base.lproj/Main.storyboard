@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MathTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="MathTrainer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,6 +211,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addLabel" destination="rAJ-mE-2qR" id="Nmd-nX-uOA"/>
+                        <outlet property="divLabel" destination="RJJ-1W-SZJ" id="01N-Er-2fK"/>
+                        <outlet property="multLabel" destination="z2m-7v-BKE" id="vJ8-M4-Sev"/>
+                        <outlet property="subLabel" destination="urh-R5-Kp9" id="TH9-il-SsD"/>
                         <outletCollection property="buttonsCollection" destination="TlO-ZP-Wdb" collectionClass="NSMutableArray" id="Nkw-Xo-lIg"/>
                         <outletCollection property="buttonsCollection" destination="cYk-Gw-6IP" collectionClass="NSMutableArray" id="2x7-pV-img"/>
                         <outletCollection property="buttonsCollection" destination="f0g-W4-Ywx" collectionClass="NSMutableArray" id="W6i-MM-ZRY"/>
@@ -239,7 +243,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Back"/>
                                 <connections>
-                                    <segue destination="TdF-85-7gl" kind="unwind" unwindAction="unwindActionWithSegue:" id="ioy-29-VY7"/>
+                                    <segue destination="TdF-85-7gl" kind="unwind" identifier="unwindSegue" unwindAction="unwindActionWithSegue:" id="ioy-29-VY7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5454" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxu-Kg-Ire">
@@ -326,7 +330,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fx-F7-NoS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="TdF-85-7gl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="2.6785714285714284"/>
+            <point key="canvasLocation" x="996" y="3"/>
         </scene>
     </scenes>
     <resources>
