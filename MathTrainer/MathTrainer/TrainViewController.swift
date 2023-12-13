@@ -18,6 +18,7 @@ final class TrainViewController: UIViewController{
     @IBOutlet var backButton: UIButton!
     
     // MARK: - Properties
+    
     private var firstNumber = 0
     private var secondNumber = 0
     private var sign: String = ""
@@ -65,6 +66,7 @@ final class TrainViewController: UIViewController{
         super.viewDidLoad()
         updateScore()
         configureQuestions()
+        makeShadowForButtons()
         configureButtons()
         
     }
@@ -77,7 +79,6 @@ final class TrainViewController: UIViewController{
         check(answer: sender.titleLabel?.text ?? "", for: sender)
     }
     
-    
     //MARK: - Methods
     private func configureButtons(){
         let buttonsArray = [leftButton,rightButton]
@@ -87,12 +88,7 @@ final class TrainViewController: UIViewController{
         backButton.layer.cornerRadius = 30
         backButton.tintColor = UIColor.secondaryLabel
         
-        buttonsArray.forEach { button in
-            button?.layer.borderColor = UIColor.darkGray.cgColor
-            button?.layer.shadowOffset = CGSize(width: 1, height: 3)
-            button?.layer.shadowOpacity = 0.45
-            button?.layer.shadowRadius = 3
-        }
+        
         
         let isRightButton = Bool.random()
         var  randomAnswer: Int
@@ -102,6 +98,16 @@ final class TrainViewController: UIViewController{
         
         rightButton.setTitle(isRightButton ? String(answer) : String(randomAnswer), for: .normal)
         leftButton.setTitle(isRightButton ? String(randomAnswer) : String(answer), for: .normal)
+    }
+    
+    private func makeShadowForButtons() {
+        let buttonsArray = [leftButton,rightButton]
+        buttonsArray.forEach { button in
+            button?.layer.borderColor = UIColor.darkGray.cgColor
+            button?.layer.shadowOffset = CGSize(width: 1, height: 3)
+            button?.layer.shadowOpacity = 0.45
+            button?.layer.shadowRadius = 3
+        }
     }
     
     private func configureQuestions() {
@@ -129,11 +135,8 @@ final class TrainViewController: UIViewController{
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [ weak self] in
                 self?.configureQuestions()
                 self?.configureButtons()
-                
             }
-            
         }
-        
     }
     
     private func updateScore(){

@@ -21,16 +21,11 @@ class MainViewController: UIViewController {
     
     // MARK: - Properties
     private var selectedType: MathTypes = .add
-    var plusCounter: Int = 0
-    var minusCounter: Int = 0
-    var divCounter: Int = 0
-    var multCounter: Int = 0
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureButtons()
-        //updateCountLabel()
     }
     
     // MARK: - Actions
