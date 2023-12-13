@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  MathTrainer
 //
 //  Created by Dmitrii Nazarov on 19.11.2023.
@@ -7,44 +7,40 @@
 
 import UIKit
 
-enum MathTypes: Int{
+enum MathTypes: Int {
     case add, substract, multiply, divide
 }
 
-
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
+    // MARK: - IBOutlets
+    @IBOutlet private var buttonsCollection: [UIButton]!
+    @IBOutlet private var addLabel: UILabel!
+    @IBOutlet private var subLabel: UILabel!
+    @IBOutlet private var divLabel: UILabel!
+    @IBOutlet private var multLabel: UILabel!
     
     // MARK: - Properties
     private var selectedType: MathTypes = .add
-    
-    
-    
-    // MARK: - IBOutlets
-    @IBOutlet var buttonsCollection: [UIButton]!
     
     // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configureButtons()
     }
-
+    
     // MARK: - Actions
-    @IBAction func buttonsAction(_ sender: UIButton) {
+    @IBAction private func buttonsAction(_ sender: UIButton) {
         selectedType = MathTypes(rawValue: sender.tag) ?? .add
         performSegue(withIdentifier: "goToNext", sender: sender)
-        //для того, чтобы знать на какой сегвей переключаться при нажатии
-        
-       
-        
     }
     
-    @IBAction func unwindAction(segue: UIStoryboardSegue){
+    @IBAction private func unwindAction(segue: UIStoryboardSegue){
+        guard let trainVC = segue.source as? TrainViewController else { return }
+        updateCountLabel(with: trainVC.count)
     }
-    // для того, чтоб работал unwind segue(обратка)
     
     // MARK: - Methods
     private func configureButtons(){
-        // add shadows
         buttonsCollection.forEach { button in
             button.layer.borderColor = UIColor.darkGray.cgColor
             button.layer.shadowOffset = CGSize(width: 1, height: 3)
@@ -58,6 +54,17 @@ class ViewController: UIViewController {
             viewController.type = selectedType
         }
     }
-    // для передачи данных на другие контроллеры
+    
+    private func updateCountLabel(with count: Int = 0) {
+        switch selectedType {
+        case .add:
+            addLabel.text = String(count)
+        case .substract:
+            subLabel.text = String(count)
+        case .multiply:
+            multLabel.text = String(count)
+        case .divide:
+            divLabel.text = String(count)
+        }
+    }
 }
-

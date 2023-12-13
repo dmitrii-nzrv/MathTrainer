@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MathTrainer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="MathTrainer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,6 +211,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addLabel" destination="rAJ-mE-2qR" id="Nmd-nX-uOA"/>
+                        <outlet property="divLabel" destination="RJJ-1W-SZJ" id="01N-Er-2fK"/>
+                        <outlet property="multLabel" destination="z2m-7v-BKE" id="vJ8-M4-Sev"/>
+                        <outlet property="subLabel" destination="urh-R5-Kp9" id="TH9-il-SsD"/>
                         <outletCollection property="buttonsCollection" destination="TlO-ZP-Wdb" collectionClass="NSMutableArray" id="Nkw-Xo-lIg"/>
                         <outletCollection property="buttonsCollection" destination="cYk-Gw-6IP" collectionClass="NSMutableArray" id="2x7-pV-img"/>
                         <outletCollection property="buttonsCollection" destination="f0g-W4-Ywx" collectionClass="NSMutableArray" id="W6i-MM-ZRY"/>
@@ -239,7 +243,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Back"/>
                                 <connections>
-                                    <segue destination="TdF-85-7gl" kind="unwind" unwindAction="unwindActionWithSegue:" id="ioy-29-VY7"/>
+                                    <segue destination="TdF-85-7gl" kind="unwind" identifier="unwindSegue" unwindAction="unwindActionWithSegue:" id="ioy-29-VY7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5454" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wxu-Kg-Ire">
@@ -265,8 +269,11 @@
                                         <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="leftAction:" destination="O7T-AW-gEc" eventType="touchUpInside" id="dvk-M5-0gp"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHG-8o-mcl">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHG-8o-mcl">
                                 <rect key="frame" x="227" y="557" width="80" height="80"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <constraints>
@@ -283,32 +290,47 @@
                                         <integer key="value" value="40"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="rightAction:" destination="O7T-AW-gEc" eventType="touchUpInside" id="di0-79-yA7"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCh-hO-39X">
+                                <rect key="frame" x="193" y="87" width="149" height="87"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="45"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n09-sq-Gbe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RHG-8o-mcl" firstAttribute="centerX" secondItem="Oy3-Ia-QOy" secondAttribute="centerX" constant="60" id="1l8-fA-K9x"/>
+                            <constraint firstItem="gCh-hO-39X" firstAttribute="top" secondItem="n09-sq-Gbe" secondAttribute="top" constant="87" id="2Pf-tS-ZEI"/>
+                            <constraint firstItem="n09-sq-Gbe" firstAttribute="trailing" secondItem="gCh-hO-39X" secondAttribute="trailing" constant="72" id="8BR-2Y-ex3"/>
                             <constraint firstItem="Wxu-Kg-Ire" firstAttribute="centerX" secondItem="Oy3-Ia-QOy" secondAttribute="centerX" id="SQZ-On-JR4"/>
                             <constraint firstItem="u7h-FN-SQv" firstAttribute="centerX" secondItem="Oy3-Ia-QOy" secondAttribute="centerX" constant="-60" id="STR-MB-Hi6"/>
                             <constraint firstItem="u7h-FN-SQv" firstAttribute="top" secondItem="Wxu-Kg-Ire" secondAttribute="bottom" constant="120" id="Vzo-BE-sQd"/>
                             <constraint firstItem="RHG-8o-mcl" firstAttribute="centerY" secondItem="u7h-FN-SQv" secondAttribute="centerY" id="XIQ-Se-p1l"/>
                             <constraint firstItem="lLc-R1-0uh" firstAttribute="leading" secondItem="n09-sq-Gbe" secondAttribute="leading" constant="50" id="Z5P-Ag-0o6"/>
                             <constraint firstItem="lLc-R1-0uh" firstAttribute="top" secondItem="n09-sq-Gbe" secondAttribute="top" constant="50" id="ieo-TS-dI2"/>
+                            <constraint firstItem="Wxu-Kg-Ire" firstAttribute="top" secondItem="gCh-hO-39X" secondAttribute="bottom" constant="215" id="rV4-Y9-AV1"/>
                             <constraint firstItem="Wxu-Kg-Ire" firstAttribute="centerY" secondItem="Oy3-Ia-QOy" secondAttribute="centerY" constant="-30" id="tVj-NE-PTh"/>
+                            <constraint firstItem="gCh-hO-39X" firstAttribute="leading" secondItem="lLc-R1-0uh" secondAttribute="trailing" constant="63" id="xbq-8m-Ndz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7r6-tR-QDd"/>
                     <connections>
                         <outlet property="backButton" destination="lLc-R1-0uh" id="YLr-G2-IPh"/>
-                        <outletCollection property="trainButtonsCollection" destination="u7h-FN-SQv" collectionClass="NSMutableArray" id="kni-dc-EBI"/>
-                        <outletCollection property="trainButtonsCollection" destination="RHG-8o-mcl" collectionClass="NSMutableArray" id="MmU-t2-Cjl"/>
+                        <outlet property="leftButton" destination="u7h-FN-SQv" id="xF1-Vu-ujM"/>
+                        <outlet property="questionLabel" destination="Wxu-Kg-Ire" id="WOp-TI-W6o"/>
+                        <outlet property="rightButton" destination="RHG-8o-mcl" id="mT0-1t-5Cz"/>
+                        <outlet property="scoreLabel" destination="gCh-hO-39X" id="s7M-OF-QMc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3fx-F7-NoS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="TdF-85-7gl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1049" y="3"/>
+            <point key="canvasLocation" x="996" y="3"/>
         </scene>
     </scenes>
     <resources>
